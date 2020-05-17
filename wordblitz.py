@@ -93,8 +93,10 @@ def setup(demo=False):
             f'input was read as {np.asarray(out)}, is this fine? \n Enter a row number that you want to change or press enter (0-3)')
         while len(r) != 0:
             fix = input(
-                f'fix the grid by typing the characters separated by a space on row {i} Row was read as {chars}')
+                f'fix the grid by typing the characters separated by a space on row {int(r)} or press enter to exit')
             out[int(r)] = fix.split(' ')
+            r = input(
+                f'input was read as {np.asarray(out)}, is this fine? \n Enter a row number that you want to change or press enter (0-3)')
         return out
     else:
         return False
@@ -155,7 +157,7 @@ def draw(coords: List, speed=0.0) -> None:
         for c in cd[1:]:
             off = grid_to_pix[c]
             pyautogui.dragTo(off[0], off[1], button='left',
-                             duration=speed, mouseDownUp=False)
+                             mouseDownUp=False, duration=speed)
         pyautogui.mouseUp()
 
 
@@ -221,7 +223,7 @@ if __name__ == '__main__':
     # demo print
     parser = argparse.ArgumentParser(description="Cheat at wordblitz")
     parser.add_argument('-d', '--depth', type=int,
-                        help='depth of the word search. eg. longest word that can be found', default=6)
+                        help='depth of the word search. eg. longest word that can be found', metavar=6, default=6)
     parser.add_argument(
         '-s', '--source', help='source of where grid is from, default is pulling from website (you need to have the game open)', choices=['browser', 'generated'], default='browser')
     parser.add_argument('-test', help="testing mode",
