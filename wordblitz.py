@@ -233,7 +233,10 @@ if __name__ == '__main__':
     source = args.source
     testing_mode = args.test
     english_words = load_words()
-    grid = setup()
+    if source == 'browser':
+        grid = setup()
+    else:
+        grid = populate()
     binds = mapping()
     cf.use_style('solarized')
     print(cf.bold_yellow(f'Dict size: {len(english_words)}'))
@@ -257,6 +260,7 @@ if __name__ == '__main__':
     print(
         cf.green(f'we have found {len(words_found)} words... running draw algorithm'))
     words_found = sorted(words_found, key=lambda k: -len(k[0]))  # max score?
-    if testing_mode:
+    if testing_mode or source == 'generated':
         print(cf.yellow(f'{words_found}'))
-    draw(words_found)  # check privacy settings before drawing
+    if not (source == 'generated'):
+        draw(words_found)  # check privacy settings before drawing
