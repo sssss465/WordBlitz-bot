@@ -228,6 +228,8 @@ if __name__ == '__main__':
         '-s', '--source', help='source of where grid is from, default is pulling from website (you need to have the game open)', choices=['browser', 'generated'], default='browser')
     parser.add_argument('-test', help="testing mode",
                         action='store_true')
+    parser.add_argument('-ov', help="override pixel locations",
+                        action='store_true')
     args = parser.parse_args()
     depth = args.depth
     source = args.source
@@ -237,7 +239,7 @@ if __name__ == '__main__':
         grid = setup()
     else:
         grid = populate()
-    binds = mapping()
+    binds = mapping(args.ov)
     cf.use_style('solarized')
     print(cf.bold_yellow(f'Dict size: {len(english_words)}'))
     print('depth is', depth)
