@@ -156,8 +156,7 @@ def draw(coords: List, speed=0.0) -> None:
         pyautogui.mouseDown()
         for c in cd[1:]:
             off = grid_to_pix[c]
-            pyautogui.dragTo(off[0], off[1], button='left',
-                             mouseDownUp=False, duration=speed)
+            pyautogui.moveTo(off[0], off[1], duration=speed)
         pyautogui.mouseUp()
 
 
