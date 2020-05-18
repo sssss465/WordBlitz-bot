@@ -151,7 +151,7 @@ def draw(coords: List, speed=0.0) -> None:
     time.sleep(1)
     for w, cd in coords:
         off = grid_to_pix[cd[0]]
-        print('drawing', w)
+        print(cf.green('drawing {w}\r'))
         pyautogui.moveTo(off[0], off[1], duration=speed)
         pyautogui.mouseDown()
         for c in cd[1:]:
