@@ -19,17 +19,12 @@ Important: tile the game so it is on the left side of the screen and make sure i
 ### Requirements
 
 ```python
-import pyautogui
-import json
-import argparse
-import tkinter as tks
-import collections
-import random
-import numpy as np
-from typing import List, Dict
-import colorful as cf
-from tqdm import tqdm
-import cv2
-import pytesseract
-import time
+pytesseract==0.3.4
+requests==2.23.0
+PyAutoGUI==0.9.50
+numpy==1.18.1
+tqdm==4.46.0
+colorful==0.5.4
+opencv_python==4.2.0.34
+Pillow==7.1.2
 ```
